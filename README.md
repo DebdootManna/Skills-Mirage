@@ -34,7 +34,7 @@
 
 1.  **Clone the repository**:
     ```bash
-    git clone https://github.com/your-username/skills-mirage.git
+    git clone https://github.com/DebdootManna/skills-mirage.git
     cd skills-mirage
     ```
 
