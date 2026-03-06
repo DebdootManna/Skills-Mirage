@@ -10,6 +10,7 @@
 *   **Live Hiring Trends**: Real-time volume tracking across 20+ Tier-2 and Tier-3 Indian cities.
 *   **Skills Intelligence**: Identification of the top 20 rising and declining skills week-over-week.
 *   **AI Vulnerability Index**: A 0–100 score for job roles based on hiring declines and AI tool mentions in JDs.
+*   **Live Scraper Simulation**: A background engine that updates market data every 10 seconds to simulate a live production environment.
 
 ### Layer 2: Worker Intelligence Engine (The Solution)
 *   **Personalized Risk Scoring**: Analyzes worker write-ups (100–200 words) using NLP to extract implicit skills and calculate vulnerability.
@@ -20,12 +21,12 @@
 
 ## 🛠 Tech Stack
 
-*   **Backend**: FastAPI (Python 3.14 compatible)
+*   **Backend**: FastAPI (Python 3.12 Optimized)
 *   **Frontend**: Streamlit
-*   **Database**: SQLite (SQLAlchemy)
+*   **Database**: SQLite (SQLAlchemy ORM)
 *   **AI/NLP**: 
     *   Google Gemini 1.5 Flash (via LangChain)
-    *   Rule-based Heuristic NLP for Skill Extraction
+    *   Hybrid Heuristic NLP for high-speed skill extraction
 *   **Visualizations**: Plotly / Pandas
 
 ---
@@ -34,18 +35,22 @@
 
 1.  **Clone the repository**:
     ```bash
-    git clone https://github.com/DebdootManna/skills-mirage.git
-    cd skills-mirage
+    git clone https://github.com/DebdootManna/Skills-Mirage.git
+    cd Skills-Mirage
     ```
 
-2.  **Install dependencies**:
+2.  **Stable Environment Setup (Recommended)**:
+    Due to incompatibilities in Python 3.14 alpha, use Python 3.12:
     ```bash
+    brew install python@3.12
+    python3.12 -m venv venv_stable
+    source venv_stable/bin/activate
     pip install -r requirements.txt
     ```
 
 3.  **Configure API Key**:
     *   Create a `.env` file in the root directory.
-    *   Add your Gemini API Key (see [WIKI.md](./WIKI.md) for detailed steps):
+    *   Add your Gemini API Key:
         ```env
         GEMINI_API_KEY=your_free_tier_key_here
         ```
@@ -55,6 +60,7 @@
     chmod +x run.sh
     ./run.sh
     ```
+    *Note: Press **Enter** when Streamlit asks for an email in the terminal.*
 
 ---
 
