@@ -25,7 +25,7 @@ def seed_courses(db: Session):
 
 def generate_mock_job(db: Session, date: datetime.datetime = None):
     if not date:
-        date = datetime.datetime.utcnow()
+        date = datetime.datetime.now(datetime.UTC)
     role = random.choice(ROLES)
     city = random.choice(CITIES)
     sector = random.choice(SECTORS)
@@ -70,7 +70,7 @@ def recalculate_vulnerabilities(db: Session):
                 score_entry.hiring_trend_pct = random.uniform(10, 30)
                 score_entry.ai_tool_mention_pct = random.uniform(40, 80)
                 
-            score_entry.updated_at = datetime.datetime.utcnow()
+            score_entry.updated_at = datetime.datetime.now(datetime.UTC)
             
     db.commit()
 
@@ -82,7 +82,7 @@ def run_scraper_loop():
     print("Backfilling initial job data...")
     if db.query(JobListing).count() < 1000:
         for _ in range(1000):
-            past_date = datetime.datetime.utcnow() - datetime.timedelta(days=random.randint(0, 365))
+            past_date = datetime.datetime.now(datetime.UTC) - datetime.timedelta(days=random.randint(0, 365))
             generate_mock_job(db, past_date)
         db.commit()
         
@@ -93,7 +93,7 @@ def run_scraper_loop():
         db.commit()
         
         recalculate_vulnerabilities(db)
-        print(f"[{datetime.datetime.utcnow()}] Added new jobs and updated vulnerability scores.")
+        print(f"[{datetime.datetime.now(datetime.UTC)}] Added new jobs and updated vulnerability scores.")
         time.sleep(10)
 
 if __name__ == "__main__":

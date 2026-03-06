@@ -1,5 +1,8 @@
 #!/bin/bash
 echo "Starting Skills Mirage Backend..."
+# Hotfix for Python 3.14 Protobuf incompatibility
+export PROTOCOL_BUFFERS_PYTHON_IMPLEMENTATION=python
+
 # Run the scraper in the background
 python -m backend.scraper &
 SCRAPER_PID=$!
